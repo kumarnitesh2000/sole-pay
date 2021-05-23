@@ -1,0 +1,187 @@
+@font-face{
+    font-family:semi_bold;
+    src: url(../Montserrat/Montserrat-SemiBold.ttf)
+    }
+.label{
+    display: inline-block;
+    background-color: #8ad86a;
+    color: white;
+    font-weight: bold;
+    padding: 30px 0;
+    font-family: semi_bold;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    margin-top: 1rem;
+    width: 150px;
+    height: 90px;
+    text-align: center;
+  }
+  h2{
+      font-family: semi_bold;
+  }
+  label{
+    font-family: semi_bold;
+}
+input{
+    font-family: semi_bold;
+}
+.res_form{
+    margin-left: -50px;
+}
+.res_form-1{
+    margin-left: -110px;
+}
+.width_res{
+    width:320px;
+}
+.width{
+    width:470px;
+}
+.width-form{
+    width:344px;
+}
+.width-1{
+    width:270px;
+}
+.width-2{
+    width:300px;
+}
+.width-4{
+    width:180px;
+}
+.color{
+color:#868686;
+}
+.color{
+    background-color:#E9E9E9;
+    }
+.color-h{
+    color: #2b2b2b;
+}
+.color-h-1{
+    color: rgb(17 24 39);
+}
+.box{
+    width: 40px;
+    height: 40px;
+}
+.font{
+    font-family:semi_bold;
+    src: url(../Montserrat/Montserrat-SemiBold.ttf)  
+}
+.card-final{
+    width: 550px;
+    height: 700px;
+    display: grid;
+    place-items: center;
+    border-radius:5px;
+}
+.card-final-2{
+    width: 400px;
+    height: 700px;
+    display: grid;
+    place-items: center;
+    border-radius:5px;
+    margin-left: -8px;
+}
+.card-final-1{
+    display: grid;
+    place-items: center;
+    border-radius:5px;
+}
+.circle{
+    width:100px;
+    height: 100px;
+    background-color: white;
+    border-radius: 50%;
+    margin-top: -10px;
+}
+.logo-1{
+    width:100px;
+    height: 100px;
+    border-radius: 50%;
+}
+.card-owner{
+    width: 454px;
+    height: 550px;
+    background-color: white;
+margin-top: -60px;
+border-radius: 10px;
+display: grid;
+place-items: center;
+padding: 7px;
+}
+.card-owner-2{
+    width: 324px;
+    height: 550px;
+    background-color: white;
+margin-top: -60px;
+border-radius: 10px;
+display: grid;
+place-items: center;
+padding: 7px;
+margin-left: -15px;
+}
+.card-owner-1{
+    width: 450px;
+    height: 550px;
+    background-color: white;
+margin-top: -60px;
+border-radius: 10px;
+display: grid;
+place-items: center;
+padding: 7px;
+padding-top:10px;
+}
+.card-final-inner{
+    flex-direction: column;
+
+}
+.card-final-inner-1{
+    flex-direction: column;
+    margin-left: -50px;
+}
+.qr{
+    width: 300px;
+    height: 300px;
+}
+.buttons-1{
+    margin-left:-30px;
+}
+.pay_icon{
+    width: 70px;
+    height: 70px;
+    margin-left: 15px;
+}
+.pay_icon-1{
+    width: 45px;
+    height: 45px;
+    margin-left: 20px;
+}
+.other-pay{
+    flex-direction: column;
+align-items: center;
+}
+.next{
+    margin-top: -50px;
+}
+.margin-btn{
+    margin-top:-200px;
+}
+.height{
+    height: 300px;
+}
+.width-3{
+ width:400px;
+}
+.form{
+    border-radius:10px;
+}
+
+@media (min-width: 1024px){
+.lg\:px-48 {
+    padding-left: 7rem;
+    padding-right: 8rem;
+}
+}
