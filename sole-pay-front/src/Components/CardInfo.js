@@ -6,18 +6,20 @@ import PP from "../images/image.png";
 import Amazon from "../images/amazon-icon-1.svg";
 import Upi from "../images/upi-ar21.svg";
 import Bhim from "../images/bhim-upi 1.svg";
-import base_url from '../config';
 import Loding from './Loding'
 import Navbar from "./Navbar";
 import ShareInfo from "./ShareInfo";
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
-import config from '../config'
-import Not from '../images/undraw_page_not_found_su7k.svg'
+import Not from '../images/undraw_page_not_found_su7k.svg';
+
+
 function CardInfo(props) {
+    const {REACT_APP_FRONTEND_URL,REACT_APP_BACKEND_URL} = process.env;
+    console.log(process.env);
     let [isOpen, setIsOpen] = React.useState(false);
     const [filterVal,setfilterVal] = React.useState('none');
-    const [link,setLink] = React.useState(config.frontend_url+window.location.pathname);
+    const [link,setLink] = React.useState(REACT_APP_FRONTEND_URL+window.location.pathname);
     const upiId = window.location.pathname.split('/')[2];
     const [data,setdata] = React.useState();
     const [isExist,setisExist] = React.useState(true);
@@ -30,7 +32,7 @@ function CardInfo(props) {
         setIsOpen(false)
     }
     useEffect(() => {
-        fetch(base_url.backend_url+'/api/pay/getupiCard/'+upiId, {
+        fetch(REACT_APP_BACKEND_URL+'/api/pay/getupiCard/'+upiId, {
             method: 'GET',
             headers:{
                 'Content-Type': 'application/json',

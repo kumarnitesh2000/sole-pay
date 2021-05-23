@@ -7,7 +7,6 @@ import upi from '../images/undraw_Designer_by46 (1) 1.svg'
 import choice from '../images/undraw_Choice_re_2hkp 1.svg'
 import Amount from '../images/undraw_personal_finance_tqcd 1.svg'
 import Reason from '../images/undraw_survey_05s5.svg'
-import defaultImage from '../images/default-logo.png'
 function UpiInfo(props) {
     const [step,setStep] = useState(1);
     const [cardInfo,setCardInfo] = useState({

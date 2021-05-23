@@ -2,11 +2,9 @@ import React from 'react';
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 import './Final_Info.css'
-import config from '../config';
-import LinkIcon from '@material-ui/icons/Link';
-import CodeIcon from '@material-ui/icons/Code';
+
 function ShareInfo({isOpen,closeModal,link,setLink}) {
-    console.log(link);
+    const {REACT_APP_FRONTEND_URL} = process.env;
     const shareOptionChange = (event) => {
         let allBox = document.getElementsByClassName('shareb');
         for(var i=0;i<2;i++){
@@ -15,9 +13,9 @@ function ShareInfo({isOpen,closeModal,link,setLink}) {
         }
         document.getElementById(event.target.id).style.backgroundColor = '#48bb78';
         if(event.target.id === 'code'){
-            setLink(`<iframe width="640px" height= "480px" src="${config.frontend_url+window.location.pathname}" frameborder= "0" marginwidth= "0" marginheight= "0" style= "border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>`);
+            setLink(`<iframe width="640px" height= "480px" src="${REACT_APP_FRONTEND_URL+window.location.pathname}" frameborder= "0" marginwidth= "0" marginheight= "0" style= "border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>`);
         }else if(event.target.id === 'link'){
-            setLink(config.frontend_url+window.location.pathname);
+            setLink(REACT_APP_FRONTEND_URL+window.location.pathname);
         }
     } 
     return (

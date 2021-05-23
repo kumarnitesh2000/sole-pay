@@ -6,11 +6,19 @@
 
 ### put a config file in both both modules and add below content
 
+## in react app 
 ```
-let config = {
-    backend_url: 'http://192.168.43.31:4000',
-    frontend_url: 'http://192.168.43.31:3000'
-}
+REACT_APP_BACKEND_URL=http://192.168.43.31:4000
+REACT_APP_FRONTEND_URL=http://192.168.43.31:3000
 
 ```
+
+## in parcel app landing page
+```
+BACKEND_URL=http://192.168.43.31:4000
+FRONTEND_URL=http://192.168.43.31:3000
+
+```
+
+
 

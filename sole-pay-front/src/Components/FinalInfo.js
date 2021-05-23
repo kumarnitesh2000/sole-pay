@@ -7,10 +7,9 @@ import Amazon from "../images/amazon-icon-1.svg";
 import Upi from "../images/upi-ar21.svg";
 import Bhim from "../images/bhim-upi 1.svg";
 import QRCode from "react-qr-code";
-import base_url from '../config';
-import Loding from './Loding'
 import Out from './Out_Loader'
 function FinalInfo(props) {
+    const {REACT_APP_BACKEND_URL} = process.env;
     const [qrval,setqrval] = React.useState("");
     const [isSubmitted,setisSubmitted] = React.useState(false);
     const submitCard = () => {
@@ -23,7 +22,7 @@ function FinalInfo(props) {
             },
             body:JSON.stringify(props.cardInfo)
         };
-        fetch(base_url.backend_url+'/api/pay/generate/upiCard', options)
+        fetch(REACT_APP_BACKEND_URL+'/api/pay/generate/upiCard', options)
         .then((res)=> res.json())
         .then((data)=>{
             if(data.vpa){

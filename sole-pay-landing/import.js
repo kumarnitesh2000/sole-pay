@@ -1,6 +1,9 @@
+import process from "process"
+console.log(process.env.FRONTEND_URL);
 let node = document.getElementById("redirect");
-node.href = config.frontend_url+"/fill";
-fetch(config.backend_url+'/api/pay/totalUpiCards')
+node.href = process.env.FRONTEND_URL+"/fill";
+
+fetch(process.env.BACKEND_URL+'/api/pay/totalUpiCards')
 .then(res => res.json())
 .then(data => {
     if(data.count){
