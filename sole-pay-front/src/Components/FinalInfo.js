@@ -73,8 +73,9 @@ function FinalInfo(props) {
         .then(base64String => {
           props.setCardInfo({...props.cardInfo,logo:base64String})
         })
+        window.scrollTo(0,document.body.scrollHeight);
     }
-  return (
+    return (
     <div className="finalInfo">
       {!isSubmitted ? (<div className="main sm:px-8 lg:px-48 md:px-24 mt-3 lg:flex sm:block justify-between items-center">
         <div className="main_left md:block sm:hidden hidden">
@@ -89,7 +90,7 @@ function FinalInfo(props) {
             </div>
             <div className="main_form mt-2">
             <div className="main_form_1 py-2">
-                <label className="text-xl color-h ml-2">Bussiness Name</label>
+                <label className="text-xl color-h ml-2">Bussiness Name <span className="font text-gray-500">{props.cardInfo.payeeName.length}/23</span></label>
                 <br />
                 <input
                   className="color ml-2 width border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-green-300 text-xl"
@@ -97,8 +98,9 @@ function FinalInfo(props) {
                   value={props.payeeName}
                   id="payeeName"
                   onChange={handleChange}
-                  maxLength="25"
+                  maxLength="23"
                 />
+              
               </div>
               <div className="main_form_1 py-2">
                 <label className="text-xl color-h ml-2">UPI</label>
@@ -167,7 +169,7 @@ function FinalInfo(props) {
             </div>
             <div className="main_form mt-2">
             <div className="main_form_1 py-2">
-                <label className="text-xl color-h ml-2">Bussiness/Payee Name</label>
+                <label className="text-xl color-h ml-2">Bussiness/Payee Name   <span className="font text-gray-500">{props.cardInfo.payeeName.length}/18</span></label>
                 <br />
                 <input
                   className="color ml-2 width-form border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-green-300 text-xl"
@@ -175,9 +177,9 @@ function FinalInfo(props) {
                   value={props.payeeName}
                   id="payeeName"
                   onChange={handleChange}
+                  maxLength="18"
                 />
-                <br/>
-                    <span className="float-right font text-gray-500">0/25</span>
+      
               </div>
               <div className="main_form_1 py-2">
                 <label className="text-xl color-h ml-2">UPI</label>
@@ -239,10 +241,10 @@ function FinalInfo(props) {
           <div className="card-final p-4 hidden" style={{backgroundColor:props.cardInfo.bgColor}}>
             <div className="card-final-inner flex items-center">
               <div className="circle mb-10">
-                <img src={props.cardInfo.logo} className="logo-1" alt="logo"/>
+                <img src={props.logo} className="logo-1" alt="logo"/>
               </div>
               <div className="card-owner">
-                <h3 className="font text-3xl mt-4 ">{props.payeeName}</h3>
+                <h3 className="font text-3xl mt-4">{props.payeeName}</h3>
                 <QRCode value={qrval} />
                 <div className="other-pay flex items-center mb-12">
                   <div className="pre flex items-center">
@@ -264,10 +266,10 @@ function FinalInfo(props) {
           <div className="card-final-1" style={{backgroundColor:props.cardInfo.bgColor}}>
             <div className="card-final-inner-1 flex items-center">
               <div className="circle mb-10">
-                <img src={props.cardInfo.logo} className="logo-1" alt="logo"/>
+                <img src={props.logo} className="logo-1" alt="logo"/>
               </div>
               <div className="card-owner-1">
-                <h3 className="font text-4xl mt-4 ">{props.payeeName}</h3>
+                <h3 className="font text-4xl mt-4 ml-5">{props.payeeName}</h3>
                 <QRCode value={qrval} />
                 <div className="other-pay flex items-center mb-12">
                   <div className="pre flex items-center">

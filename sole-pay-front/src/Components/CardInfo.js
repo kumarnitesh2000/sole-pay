@@ -54,8 +54,8 @@ function CardInfo(props) {
             console.log(imgData);
             const pdf = new jsPDF();
             pdf.addImage(imgData, 'JPEG', 30, 20);
-            pdf.output('dataurlnewwindow');
-            //pdf.save(`${data.vpa}.pdf`);
+            //pdf.output('dataurlnewwindow');
+            pdf.save(`${data.vpa}.pdf`);
         });
     }
     const printDocumentMobile = () => {
@@ -95,6 +95,7 @@ function CardInfo(props) {
             <div className="card-owner">
               <h3 className="font text-4xl mt-4 ">{data.payeeName}</h3>
               <img src={data.qrcode} className="qr" alt="qr"/>
+              <p className="font text-base">Powered by <a className="font text-base text-blue-900" style={{marginTop:'-20px'}}>solepay.ml</a></p>
               <div className="other-pay flex items-center mb-12">
                 <div className="pre flex items-center">
                   <img src={GP} alt="Google Pay" className="pay_icon" />
@@ -120,8 +121,9 @@ function CardInfo(props) {
                 <img src={data.logo} className="logo-1" alt="logo"/>
               </div>
               <div className="card-owner-2">
-                <h3 className="font text-4xl mt-4 ">{data.payeeName}</h3>
+                <h3 className="font text-3xl mt-4 ">{data.payeeName}</h3>
                 <img src={data.qrcode} />
+                <p className="font text-base">Powered by <a className="font text-base text-blue-900" style={{marginTop:'-20px'}}>solepay.ml</a></p>
                 <div className="other-pay flex items-center mb-12">
                   <div className="pre flex items-center">
                     <img src={GP} alt="Google Pay" className="pay_icon" />
@@ -157,7 +159,7 @@ function CardInfo(props) {
                     >
                     Share
                   </button>
-                  <button className="bg-green-500 ml-2 rounded outline-none border-none p-2 font width-4 text-xl text-white"
+                  <button className="bg-green-500 ml-6 rounded outline-none border-none p-2 font width-4 text-xl text-white"
                   onClick={printDocumentMobile}  
                   >
                     Dowload

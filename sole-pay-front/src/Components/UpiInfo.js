@@ -7,6 +7,7 @@ import upi from '../images/undraw_Designer_by46 (1) 1.svg'
 import choice from '../images/undraw_Choice_re_2hkp 1.svg'
 import Amount from '../images/undraw_personal_finance_tqcd 1.svg'
 import Reason from '../images/undraw_survey_05s5.svg'
+import defaultImage from '../images/default-logo.png'
 function UpiInfo(props) {
     const [step,setStep] = useState(1);
     const [cardInfo,setCardInfo] = useState({
@@ -15,7 +16,7 @@ function UpiInfo(props) {
         vpa: "",
         reason: "",
         bgColor: "#f36565",
-        logo: ''
+        logo: 'https://i.ibb.co/C68gH9Z/default-logo.png'
     });
     const handleChange = (event) =>{
         setCardInfo({...cardInfo,[event.target.id]: event.target.value});
@@ -35,9 +36,9 @@ function UpiInfo(props) {
                 <form className="form bg-gray-100 shadow-xl p-6 px-8 md:block sm:hidden hidden">
                     <h3 className="text-2xl color-h-1 mb-10 font">Fill Form</h3>
                     <h3 className="text-xl color-h font">Bussiness Name</h3>
-                    <input maxLength="25" type="text" className="color width border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-green-300 text-xl" id="payeeName" value={cardInfo.payeeName} onChange={handleChange} placeholder="eg. modern auto spairs"/>
+                    <input maxLength="23" type="text" className="color width border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-green-300 text-xl" id="payeeName" value={cardInfo.payeeName} onChange={handleChange} placeholder="eg. modern auto spairs"/>
                    <br/>
-                    <span className="float-right font text-gray-500">0/25</span>
+                    <span className="float-right font text-gray-500">{cardInfo.payeeName.length}/23</span>
                     <br />
                     <button className="submit-btn width mt-5 bg-green-500 rounded outline-none border-none p-2 font text-2xl text-white"onClick={nextStep}>
                         Next
@@ -45,10 +46,10 @@ function UpiInfo(props) {
                 </form>
                 <form className="p-6 px-8 res_form md:hidden">
                     <h3 className="text-2xl color-h-1 mb-10 font">Fill Form</h3>
-                    <h3 className="text-xl color-h font">Bussiness Name</h3>
-                    <input type="text" className="color width_res border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-green-300 text-xl" id="payeeName" value={cardInfo.payeeName} onChange={handleChange} placeholder="eg. modern auto spairs"/>
-                    <br />
-                    <button className="submit-btn width_res mt-5 bg-green-500 rounded outline-none border-none p-2 font text-2xl text-white"onClick={nextStep}>
+                    <h3 className="text-xl color-h font">Bussiness Name <span className="font text-gray-500">{cardInfo.payeeName.length}/18</span></h3>
+
+                    <input maxLength="18" type="text" className="color width_res border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-green-300 text-xl" id="payeeName" value={cardInfo.payeeName} onChange={handleChange} placeholder="eg. modern auto spairs"/>
+                        <button className="submit-btn width_res mt-5 bg-green-500 rounded outline-none border-none p-2 font text-2xl text-white"onClick={nextStep}>
                         Next
                     </button>
                 </form>
@@ -152,7 +153,7 @@ function UpiInfo(props) {
             </div>
             </div>) :(null)}
             {step===6 ? (<div>
-                <FinalInfo cardInfo={cardInfo} vpa={cardInfo.vpa} amount={cardInfo.amount} reason={cardInfo.reason} payeeName={cardInfo.payeeName} setCardInfo={setCardInfo}/>
+                <FinalInfo logo={cardInfo.logo} cardInfo={cardInfo} vpa={cardInfo.vpa} amount={cardInfo.amount} reason={cardInfo.reason} payeeName={cardInfo.payeeName} setCardInfo={setCardInfo}/>
             </div>) :(null)}
         </div>
     );
