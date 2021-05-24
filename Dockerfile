@@ -15,5 +15,5 @@ FROM nginx
 COPY --from=front_builder /app/front/build/ /usr/share/nginx/html/build
 COPY --from=landing_builder /app/landing/dist /usr/share/nginx/html/dist
 RUN rm /etc/nginx/conf.d/default.conf
-COPY ./nginx/frontend.conf /etc/nginx/conf.d/default.conf
+COPY ./nginx/* /etc/nginx/conf.d
 CMD ["nginx","-g","daemon off;"]
