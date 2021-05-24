@@ -4,7 +4,7 @@
 1. sole-pay-front -> react side
 2. sole-pay-landing -> static landing page
 
-### put a config file in both both modules and add below content
+### put a env file in both both modules and add below content
 
 ## in react app 
 ```
