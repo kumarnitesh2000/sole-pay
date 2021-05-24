@@ -7,7 +7,7 @@ function App() {
     <div className="app">
       <Router>
         <Switch>
-        <Route path="/fill">
+        <Route path="/">
             <UpiInfo />
           </Route>
           <Route path="/get">
