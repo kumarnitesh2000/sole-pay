@@ -1,7 +1,7 @@
 import process from "process"
 console.log(process.env.FRONTEND_URL);
 let node = document.getElementById("redirect");
-node.href = process.env.FRONTEND_URL+"/fill";
+node.href = process.env.FRONTEND_URL+"/build";
 
 fetch(process.env.BACKEND_URL+'/api/pay/totalUpiCards')
 .then(res => res.json())
