@@ -7,6 +7,7 @@ function App() {
     <div className="app">
       <Router>
         <Switch>
+        <Route path="/test"><h1>hello from test your route runs enjoy</h1></Route>
         <Route path="/get">
             <CardInfo />
         </Route>
