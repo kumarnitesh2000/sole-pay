@@ -7,11 +7,11 @@ function App() {
     <div className="app">
       <Router>
         <Switch>
-        <Route path="/fill">
-            <UpiInfo />
-          </Route>
-          <Route path="/get">
+        <Route path="/get">
             <CardInfo />
+        </Route>
+        <Route path="/">
+            <UpiInfo />
           </Route>
         </Switch>
       </Router>
