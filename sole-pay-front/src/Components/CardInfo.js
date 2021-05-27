@@ -20,7 +20,8 @@ function CardInfo(props) {
     let [isOpen, setIsOpen] = React.useState(false);
     const [filterVal,setfilterVal] = React.useState('none');
     const [link,setLink] = React.useState(REACT_APP_FRONTEND_URL+window.location.pathname);
-    const upiId = window.location.pathname.split('/')[2];
+    let pathArray = window.location.pathname.split('/');
+    const upiId = pathArray[pathArray.length-1];
     const [data,setdata] = React.useState();
     const [isExist,setisExist] = React.useState(true);
     function openModal() {
