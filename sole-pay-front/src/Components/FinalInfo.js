@@ -9,7 +9,7 @@ import Bhim from "../images/bhim-upi 1.svg";
 import QRCode from "react-qr-code";
 import Out from './Out_Loader'
 function FinalInfo(props) {
-    const {REACT_APP_BACKEND_URL} = process.env;
+    const {REACT_APP_BACKEND_URL,PUBLIC_URL} = process.env;
     const [qrval,setqrval] = React.useState("");
     const [isSubmitted,setisSubmitted] = React.useState(false);
     const submitCard = () => {
@@ -26,7 +26,7 @@ function FinalInfo(props) {
         .then((res)=> res.json())
         .then((data)=>{
             if(data.vpa){
-                window.open('/get/'+data.vpa, "_self");
+                window.open(PUBLIC_URL+'/get/'+data.vpa, "_self");
             }else{
                 console.log('error');alert(data.message);
                 window.open('/', "_self");
