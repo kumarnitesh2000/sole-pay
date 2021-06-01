@@ -28,6 +28,25 @@ function CardInfo(props) {
         setIsOpen(true)
         setfilterVal('blur(18px) brightness(70%)');
     }
+    function getLink(payeeName,vpa,amount,reason)
+    {
+      const config = {
+          upi_pay_protocol: 'upi://pay?',
+          indian_curr: 'INR'
+      }
+      payeeName = encodeURI(payeeName);
+      reason = encodeURI(reason);
+      if(amount){
+          return `${config.upi_pay_protocol}&pn=${payeeName}&pa=${vpa}&cu=${config.indian_curr}&am=${amount}&tn=${reason}`;
+      }else{
+          return `${config.upi_pay_protocol}&pn=${payeeName}&pa=${vpa}&cu=${config.indian_curr}&tn=${reason}`;
+      }
+    }
+    function openIntent(){
+      let {payeeName,vpa,amount,reason} = data;
+      let intent = getLink(payeeName,vpa,amount,reason);
+      window.open(intent,'_blank');
+    }
     function closeModal() {
         setfilterVal('none');
         setIsOpen(false)
@@ -165,8 +184,9 @@ function CardInfo(props) {
                   <button className="bg-green-500 ml-6 rounded outline-none border-none p-2 font width-4 text-xl text-white"
                   onClick={printDocumentMobile}  
                   >
-                    Dowload
+                  Dowload
                   </button>
+                  <button className="bg-green-500 ml-6 rounded outline-none border-none p-2 font width-4 text-xl text-white" onClick={openIntent}>Pay Now</button>
         </div>          
         </React.Fragment>
         ): (<div>
