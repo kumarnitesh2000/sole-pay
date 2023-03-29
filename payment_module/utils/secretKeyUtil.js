@@ -4,8 +4,8 @@ const env = process.env.NODE_ENV || "development";
 const crypto = require("crypto");
 const globalConstant = require("../utils/globalConstant");
 const logger = require("./logger");
-const public_pem_file_path = process.env.PUBLIC_PEM_FILE_PATH;
-const private_pem_file_path = process.env.PRIVATE_PEM_FILE_PATH;
+const public_pem_file_path = process.env.PUBLIC_PEM_FILE_PATH ? process.env.PUBLIC_PEM_FILE_PATH: "public.pem";
+const private_pem_file_path = process.env.PRIVATE_PEM_FILE_PATH ? process.env.PRIVATE_PEM_FILE_PATH: "private.pem";
 
 /**
  * private pem file path
