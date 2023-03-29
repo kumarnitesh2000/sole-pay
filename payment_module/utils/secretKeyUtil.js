@@ -20,7 +20,7 @@ try {
     )
   );
 } catch (err) {
-  console.error('Error reading private key file:', err);
+  logger.error('Error reading private key file:', err);
 }
 /**
  * public pem file path
@@ -35,7 +35,7 @@ try {
     )
   );
 } catch (err) {
-  console.error('Error reading public key file:', err);
+  logger.error('Error reading public key file:', err);
 }
 
 
