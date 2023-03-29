@@ -5,7 +5,7 @@
 ```
 NODE_ENV=development
 LOG_DIRECTORY=./logs/development
-URI=MONGO_URI=mongodb+srv://apoorvgarg:postgres@cluster0.afa3u.mongodb.net/paydb?retryWrites=true&w=majority
+MONGO_URI=mongodb+srv://apoorvgarg:postgres@cluster0.afa3u.mongodb.net/paydb?retryWrites=true&w=majority
 PORT=4000
 UPI_PAYMENT_LINK_BASE=upi://pay?
 BASE_URL=http://localhost:4000
