@@ -1,0 +1,13 @@
+# npm package
+node_modules
+
+# logs
+logs
+
+
+#env files
+.env
+
+#pem files
+certs
+*.pem

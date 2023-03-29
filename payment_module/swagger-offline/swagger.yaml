@@ -1,0 +1,122 @@
+swagger: '2.0'
+info:
+  title: Payment Routes
+  description: Apis for Payment Related Service
+  version: 1.0.0
+consumes:
+  - application/json
+produces:
+  - application/json
+host: localhost:4000
+basePath: /offline
+schemes:
+  - http
+paths:
+  /health:
+    get:
+      summary: check health of server
+      responses:
+        200:
+          description: OK
+        default:  
+          description: Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /generate/upiLink:
+    post:
+      summary: create upi link for your bussiness
+      parameters:
+        - $ref: '#/parameters/upiInfoBody'
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+  /generate/upiCard:
+    post:
+      summary: create upi link for your bussiness
+      parameters:
+        - $ref: '#/parameters/upiInfoBody'
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK        
+  /generate/qrCode:
+    post:
+      summary: create qr for your data
+      parameters:
+        - $ref: '#/parameters/qrBody'
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK     
+  /getupiCard/{vpa}:
+    get:
+      summary: get vpa info
+      parameters:
+          - $ref: '#/parameters/vpaPath'
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK  
+  /totalUpiCards:
+    get:
+      summary: get total upi cards
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK               
+parameters:
+  upiInfoBody: &upiInfoBody
+    name: body
+    in: body
+    required: true
+    schema:
+      $ref: '#/definitions/upiInfoBody'
+  qrBody: &qrBody
+    name: body
+    in: body
+    required: true
+    schema:
+      $ref: '#/definitions/qrBody'    
+  vpaPath: &vpaPath
+    name: vpa
+    in: path
+    required: true
+definitions: 
+  ErrorResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string
+  upiInfoBody:
+    required:
+      - payeeName
+      - vpa
+      - reason
+    properties:
+      amount:
+        type: integer
+      payeeName:
+        type: string
+        example: "Nitesh Kumar"
+      vpa: 
+        type: string
+        example: "lolo@okhdfcbank"
+      reason:
+        type: string
+        example: "for buying product"
+  qrBody:
+    required:
+      - data
+      - base64
+    properties:
+      data:
+        type: string
+      base64:
+        type: boolean

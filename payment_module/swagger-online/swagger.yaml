@@ -1,0 +1,558 @@
+swagger: '2.0'
+info:
+  title: Payment Routes
+  description: Apis for Payment Related Service
+  version: 1.0.0
+consumes:
+  - application/json
+produces:
+  - application/json
+host: localhost:4000
+basePath: /online
+schemes:
+  - http
+  - https
+paths:
+  /health:
+    get:
+      summary: check health of server
+      responses:
+        200:
+          description: OK
+        default:  
+          description: Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /user/register:
+    post:
+      summary: api to create a user -> merchant/customer
+      parameters:
+        - $ref: '#/parameters/merchantXApiKey'
+        - $ref: '#/parameters/appId'
+        - $ref: '#/parameters/appSecret'
+        - $ref: '#/parameters/registerBody'
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+        default:  
+          description: Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /user/login:
+    post:
+      summary: api to create a user -> merchant/customer
+      parameters:
+        - $ref: '#/parameters/loginBody'
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+        default:  
+          description: Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /user/verifyOTP:
+    post:
+      summary: api to verify OTP
+      parameters:
+        - $ref: '#/parameters/otpBody'
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+        default:  
+          description: Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /user/customers:
+    get:
+      summary: api to get all the customers by merchant
+      parameters:
+        - $ref: '#/parameters/merchantXApiKey'
+        - $ref: '#/parameters/appId'
+        - $ref: '#/parameters/appSecret'
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+        default:  
+          description: Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /user/merchant:
+    get:
+      summary: api to get merchant detail
+      parameters:
+        - $ref: '#/parameters/merchantXApiKey'
+        - $ref: '#/parameters/appId'
+        - $ref: '#/parameters/appSecret'
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+        default:  
+          description: Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /user/merchant/kyc:
+    put:
+      summary: api to update the user kyc
+      description: |-
+        In This Api you can update your kyc by sending any document or information, which contains 2 properties
+        `document_type` and `document_info` in which `document_type` is a enum : `pan`, `aadhar`, `bank_account`, `vpa`
+        and document_info is different for different `document_type`
+        ## document_type: `pan`
+        ```
+        "document_info":{
+              pan: ABCDE1234A
+              consent: 'Y'
+              reason: Reason for verifying PAN set by the developer
+        }
+        ```
+        ## document_type: `bank_account`
+        ```
+        "document_info":{
+              ifsc: ABCD0123456
+              accountNumber: '1234567890'
+        }
+        ```
+        ## document_type: `aadhar`
+        ```
+        "document_info":{
+            "aadhaarNumber": "999999990019"
+        }
+        ```
+      parameters:
+        - $ref: '#/parameters/merchantXApiKey'
+        - $ref: '#/parameters/appId'
+        - $ref: '#/parameters/appSecret'
+        - $ref: '#/parameters/documentStructure'
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+        default:  
+          description: Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+    post:
+      summary: api to initiate the kyc process if user consent
+      parameters:
+        - $ref: '#/parameters/merchantXApiKey'
+        - $ref: '#/parameters/appId'
+        - $ref: '#/parameters/appSecret'
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+        default:  
+          description: Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+    
+  /app/admin:
+    post:
+      summary: api to register an app
+      parameters:
+        - $ref: '#/parameters/adminSecret'
+        - $ref: '#/parameters/appBody'
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+        default:  
+          description: Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /app:
+    post:
+      summary: api to register an app
+      parameters:
+        - $ref: '#/parameters/merchantXApiKey'
+        - $ref: '#/parameters/appBody'
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+        default:  
+          description: Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+    get:
+      summary: api to get apps of a merchant
+      parameters:
+        - $ref: '#/parameters/merchantXApiKey'
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+        default:  
+          description: Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+    patch:
+      summary: api to edit the app secret
+      parameters:
+        - $ref: '#/parameters/merchantXApiKey'
+        - $ref: '#/parameters/appId'
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+        default:  
+          description: Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+    put:
+      summary: api to edit the app information
+      parameters:
+        - $ref: '#/parameters/merchantXApiKey'
+        - $ref: '#/parameters/appId'
+        - $ref: '#/parameters/appSecret'
+        - $ref: '#/parameters/appEditBody'
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+        default:  
+          description: Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+    
+  /app/details:
+    get:
+      summary: api to get app details
+      parameters:
+        - $ref: '#/parameters/appId'
+        - $ref: '#/parameters/appSecret'
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+        default:  
+          description: Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+            
+  /payment/bill:
+    get:
+      summary: api to get all the bills of the merchant
+      parameters:
+        - $ref: '#/parameters/merchantXApiKey'
+        - $ref: '#/parameters/appId'
+        - $ref: '#/parameters/appSecret'
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+        default:  
+          description: Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+    post:
+      summary: api to create a bill
+      parameters:
+        - $ref: '#/parameters/merchantXApiKey'
+        - $ref: '#/parameters/appId'
+        - $ref: '#/parameters/appSecret'
+        - $ref: '#/parameters/billBody'
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+        default:  
+          description: Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+
+  /payment/bill/{billId}:
+    get:
+      summary: get the status of bill
+      parameters:
+        - $ref: '#/parameters/merchantXApiKey'
+        - $ref: '#/parameters/appId'
+        - $ref: '#/parameters/appSecret'
+        - $ref: '#/parameters/billId'
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+        default:  
+          description: Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /payment/transactions:
+    get:
+      summary: get all the transactions
+      parameters:
+        - $ref: '#/parameters/merchantXApiKey'
+        - $ref: '#/parameters/appId'
+        - $ref: '#/parameters/appSecret'
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+        default:  
+          description: Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /webhook/mockpay/notifications:
+    post: 
+      summary: this api will hit by the payment gateway for payment related notification
+      parameters:
+        - $ref: '#/parameters/mockPayBody'
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+        default:  
+          description: Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+            
+parameters:
+  billId: &billId
+    in: path
+    name: billId
+    type: string
+    required: true
+  documentStructure: &documentStructure
+    name: body
+    in: body
+    required: true
+    schema:
+      $ref: '#/definitions/documentStructure'
+  merchantXApiKey: &merchantXApiKey
+    name: x-api-key
+    description: enter merchant x-api-key
+    in: header
+    required: false
+    type: string
+  appId: &appId
+    name: app-id
+    description: enter app-id
+    in: header
+    required: true
+    type: string
+  adminSecret: &adminSecret
+    name: admin-secret
+    description: enter admin-secret base64 encoded <admin_username>:<admin_password>
+    in: header
+    required: true
+    type: string
+  appSecret: &appSecret
+    name: app-secret
+    description: enter app-secret
+    in: header
+    required: true
+    type: string  
+  appBody: &appBody
+    name: body
+    in: body
+    required: true
+    schema: 
+      $ref: '#/definitions/appBody'
+  appEditBody: &appEditBody
+    name: body
+    in: body
+    required: true
+    schema: 
+      $ref: '#/definitions/appEditBody'
+  mockPayBody: &mockPayBody
+    name: body
+    in: body
+    required: true
+    schema: 
+      $ref: '#/definitions/mockPayBody'
+  billBody: &billBody
+    name: body
+    in: body
+    required: true
+    schema: 
+      $ref: '#/definitions/billBody'
+  registerBody: &registerBody
+    name: body
+    in: body
+    required: true
+    schema:
+      $ref: '#/definitions/registerBody'
+  loginBody: &loginBody
+    name: body
+    in: body
+    required: true
+    schema:
+      $ref: '#/definitions/loginBody'
+  otpBody: &otpBody
+    name: body
+    in: body
+    required: true
+    schema:
+      $ref: '#/definitions/otpBody'
+
+definitions: 
+  ErrorResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string
+  documentStructure:
+    required:
+      - document_type
+      - document_info
+    properties:
+      document_type:
+        type: string
+        enum: 
+          - pan
+          - aadhar
+          - bank_account
+          - vpa
+      document_info:
+        type: object
+
+  billBody:
+    required:
+     - customerId
+     - billerId
+     - additionalInfo
+     - amountRanges
+     - paymentGateway
+    properties:
+      customerId:
+        type: string
+      billerId:
+        type: string
+      additionalInfo:
+        type: object
+        properties:
+          key:
+            type: string
+      amountRanges:
+        type: object
+        properties:
+          minAmount:
+            type: integer
+          maxAmount:
+            type: integer
+      paymentGateway:
+        type: string
+        enum:
+          - setu
+          - razorpay
+  paymentSetMockPay:
+    properties:
+      amount_paid:
+        type: integer
+      created_at:
+        type: string
+  appBody:
+    required:
+     - appName
+    properties:
+      appName:
+        type: string
+  appEditBody:
+    required:
+     - callbackUrl
+     - callbackSecret
+    properties:
+      callbackUrl:
+        type: string
+      callbackSecret:
+        type: string
+  mockPayBody:
+    required:
+      - platform_id
+      - payment_set
+      - first_min_amount
+      - payee_name
+      - max_amount
+      - status
+      - biller_id
+      - callback_url
+      - payment_link
+    properties:
+      platform_id:
+        type: string
+      payment_set:
+        type: array
+        items:
+          $ref: '#/definitions/paymentSetMockPay'
+      first_min_amount:
+        type: integer
+      payee_name:
+        type: string
+      max_amount:
+        type: integer
+      status: 
+        type: string
+        enum:
+          - partially_paid
+          - paid
+          - failed
+      biller_id: 
+        type: string
+      callback_url: 
+        type: string
+      payment_link:
+        type: string
+  otpBody:
+    required:
+      - otp
+      - phoneNumber
+      - hash
+    properties:
+      otp:
+        type: string
+      phoneNumber:
+        type: string
+      hash: 
+        type: string
+  loginBody:
+    required:
+      - phoneNumber
+      - role
+    properties:
+      phoneNumber:
+        type: string
+      role:
+        type: string
+        enum:
+          - merchant
+          - customer
+      
+  registerBody:
+    required:
+      - phoneNumber
+    properties:
+      phoneNumber:
+        type: string
+      displayName:
+        type: string  
+      role:
+        type: string
+        enum:
+          - merchant
+          - customer
+
+
