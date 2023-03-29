@@ -11,7 +11,7 @@ COPY ./sole-pay-landing .
 RUN npm install && npm i -g parcel-bundler && npm run build
 
 # second stage is for nginx to serve the files
-FROM nginx
+FROM nginx:1.15.8-alpine
 RUN rm -rf /usr/share/nginx/html/index.html
 COPY --from=front_builder /app/front/build/ /usr/share/nginx/html
 COPY --from=landing_builder /app/landing/dist /usr/share/nginx/html/dist
