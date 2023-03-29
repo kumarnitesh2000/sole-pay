@@ -10,22 +10,34 @@ const private_pem_file_path = process.env.PRIVATE_PEM_FILE_PATH ? process.env.PR
 /**
  * private pem file path
  */
-exports.readPrivatePEMFile = fs.readFileSync(
-  path.join(
-    path.dirname(__dirname),
-    `${private_pem_file_path}`
-  )
-);
+let private_key;
 
+try {
+  private_key = fs.readFileSync(
+    path.join(
+      path.dirname(__dirname),
+      `${private_pem_file_path}`
+    )
+  );
+} catch (err) {
+  console.error('Error reading private key file:', err);
+}
 /**
  * public pem file path
  */
-exports.readPublicPEMFile = fs.readFileSync(
-  path.join(
-    path.dirname(__dirname),
-    `${public_pem_file_path}`
-  )
-);
+let public_key;
+
+try {
+  public_key = fs.readFileSync(
+    path.join(
+      path.dirname(__dirname),
+      `${public_pem_file_path}`
+    )
+  );
+} catch (err) {
+  console.error('Error reading public key file:', err);
+}
+
 
 /**
  *
@@ -75,3 +87,6 @@ exports.secureKey = (secretKey,payload) => {
       logger.error(err);
     }
   }
+
+exports.readPrivatePEMFile = private_key;
+exports.readPublicPEMFile = public_key;
