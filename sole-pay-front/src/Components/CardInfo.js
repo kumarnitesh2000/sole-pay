@@ -15,11 +15,9 @@ import Not from '../images/undraw_page_not_found_su7k.svg';
 
 
 function CardInfo(props) {
-    const {REACT_APP_FRONTEND_URL,REACT_APP_BACKEND_URL} = process.env;
-    console.log(process.env);
     let [isOpen, setIsOpen] = React.useState(false);
     const [filterVal,setfilterVal] = React.useState('none');
-    const [link,setLink] = React.useState(REACT_APP_FRONTEND_URL+window.location.pathname);
+    const [link,setLink] = React.useState('/'+window.location.pathname);
     let pathArray = window.location.pathname.split('/');
     const upiId = pathArray[pathArray.length-1];
     const [data,setdata] = React.useState();
@@ -52,7 +50,7 @@ function CardInfo(props) {
         setIsOpen(false)
     }
     useEffect(() => {
-        fetch(REACT_APP_BACKEND_URL+'/api/pay/getupiCard/'+upiId, {
+        fetch('/pay_service/offline/getupiCard/'+upiId, {
             method: 'GET',
             headers:{
                 'Content-Type': 'application/json',

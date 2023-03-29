@@ -9,7 +9,6 @@ import Bhim from "../images/bhim-upi 1.svg";
 import QRCode from "react-qr-code";
 import Out from './Out_Loader'
 function FinalInfo(props) {
-    const {REACT_APP_BACKEND_URL,PUBLIC_URL} = process.env;
     const [qrval,setqrval] = React.useState("");
     const [isSubmitted,setisSubmitted] = React.useState(false);
     const submitCard = () => {
@@ -22,7 +21,7 @@ function FinalInfo(props) {
             },
             body:JSON.stringify(props.cardInfo)
         };
-        fetch(REACT_APP_BACKEND_URL+'/api/pay/generate/upiCard', options)
+        fetch('/pay_service/offline/generate/upiCard', options)
         .then((res)=> res.json())
         .then((data)=>{
             if(data.vpa){

@@ -1,6 +1,4 @@
-import process from "process"
-
-fetch(process.env.BACKEND_URL+'/api/pay/totalUpiCards')
+fetch('/pay_service/offline/totalUpiCards')
 .then(res => res.json())
 .then(data => {
     if(data.count){
