@@ -4,7 +4,6 @@ import { Fragment } from 'react'
 import './Final_Info.css'
 
 function ShareInfo({isOpen,closeModal,link,setLink}) {
-    const {REACT_APP_FRONTEND_URL} = process.env;
     const shareOptionChange = (event) => {
         let allBox = document.getElementsByClassName('shareb');
         for(var i=0;i<2;i++){
@@ -13,9 +12,9 @@ function ShareInfo({isOpen,closeModal,link,setLink}) {
         }
         document.getElementById(event.target.id).style.backgroundColor = '#48bb78';
         if(event.target.id === 'code'){
-            setLink(`<iframe width="640px" height= "480px" src="${REACT_APP_FRONTEND_URL+window.location.pathname}" frameborder= "0" marginwidth= "0" marginheight= "0" style= "border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>`);
+            setLink(`<iframe width="640px" height= "480px" src="${'/'+window.location.pathname}" frameborder= "0" marginwidth= "0" marginheight= "0" style= "border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>`);
         }else if(event.target.id === 'link'){
-            setLink(REACT_APP_FRONTEND_URL+window.location.pathname);
+            setLink('/'+window.location.pathname);
         }
     } 
     return (
