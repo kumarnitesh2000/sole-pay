@@ -17,4 +17,6 @@ COPY --from=front_builder /app/front/build/ /usr/share/nginx/html
 COPY --from=landing_builder /app/landing/dist /usr/share/nginx/html/dist
 RUN rm /etc/nginx/conf.d/default.conf
 COPY ./nginx/* /etc/nginx/conf.d/
+ENV SERVER_NAME example.com
+RUN sed -i "s|\${SERVER_NAME}|${SERVER_NAME}|g" /etc/nginx/conf.d/http.conf
 CMD ["nginx","-g","daemon off;"]
