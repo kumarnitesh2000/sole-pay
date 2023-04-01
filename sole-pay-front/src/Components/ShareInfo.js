@@ -12,9 +12,9 @@ function ShareInfo({isOpen,closeModal,link,setLink}) {
         }
         document.getElementById(event.target.id).style.backgroundColor = '#48bb78';
         if(event.target.id === 'code'){
-            setLink(`<iframe width="640px" height= "480px" src="${'/'+window.location.pathname}" frameborder= "0" marginwidth= "0" marginheight= "0" style= "border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>`);
+            setLink(`<iframe width="640px" height= "480px" src="${window.location.href}" frameborder= "0" marginwidth= "0" marginheight= "0" style= "border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>`);
         }else if(event.target.id === 'link'){
-            setLink('/'+window.location.pathname);
+            setLink(window.location.href);
         }
     } 
     return (
