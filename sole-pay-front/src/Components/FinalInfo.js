@@ -25,7 +25,7 @@ function FinalInfo(props) {
         .then((res)=> res.json())
         .then((data)=>{
             if(data.vpa){
-                window.open('/get/'+data.vpa, "_self");
+                window.open('/app/get/'+data.vpa, "_self");
             }else{
                 console.log('error');alert(data.message);
                 window.open('/', "_self");
