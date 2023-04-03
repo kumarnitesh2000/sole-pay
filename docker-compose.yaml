@@ -1,19 +1,21 @@
-version: "3.9"
+version: "3"
 services:
-  frontend:
-    depends_on:
-      - backend
-    build: 
-      context: .
-      dockerfile: Dockerfile
-    environment:
-      SERVER_NAME: http://ip172-18-0-70-cgkm1n81k7jg00dlabj0-80.direct.labs.play-with-docker.com
-    ports:
-      - "80:80"
   
   backend:
-    build:
-      context: ./payment_module
-      dockerfile: Dockerfile
-    env_file:
-      - ./payment_module/dev.env
+    build: ./payment_module
+    env_file: ./payment_module/dev.env
+    networks:
+      - solepay-network
+  
+  frontend:
+    build: .
+    environment:
+      SERVER_NAME: http://ip172-19-0-42-cgldncqe69v000a5gmj0-80.direct.labs.play-with-docker.com/
+    ports:
+      - "80:80"
+    networks:
+      - solepay-network
+
+networks:
+  solepay-network:
+    driver: bridge
