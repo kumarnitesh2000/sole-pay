@@ -4,6 +4,8 @@
 ```
 in root directory Dockerfile for client side / proxy
 in root directory / payment_module for backend
+sudo docker build -t clientside .
+sudo docker build -t backend ./payment_module
 ```
 
 ## Run the Container
