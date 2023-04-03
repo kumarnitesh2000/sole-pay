@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  backend:
+    build: ./payment_module
+    env_file: dev.env
+    networks:
+      - solepay-network
+
+  clientside:
+    build: .
+    ports:
+      - "80:80"
+    environment:
+      SERVER_NAME: ec2-13-233-93-204.ap-south-1.compute.amazonaws.com
+    networks:
+      - solepay-network
+
+networks:
+  solepay-network:
+    driver: bridge
